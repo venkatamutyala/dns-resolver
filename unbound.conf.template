@@ -1,0 +1,47 @@
+server:
+    # --- Network ---
+    interface: 0.0.0.0
+    # interface: ::0        # Commented out IPv6 to prevent "Address not available" errors if your network lacks IPv6
+    port: 53
+    do-udp: yes
+    do-tcp: yes
+    
+    # --- User Permissions ---
+    # In Docker, we often want to run as the user defined in the Dockerfile. 
+    # If this causes permission errors, change to: username: "root"
+    username: "unbound" 
+
+    # --- Recursion & DNSSEC ---
+    module-config: "validator iterator"
+    root-hints: "/etc/unbound/root.hints"
+    auto-trust-anchor-file: "/var/lib/unbound/root.key"
+    harden-dnssec-stripped: yes
+
+    # --- Caching (In seconds) ---
+    # FIXED: Replaced  with actual number
+    cache-max-ttl: 1
+    cache-min-ttl: 0
+    
+    # --- Rate Limiting (DDoS Protection) ---
+    ip-ratelimit: 30
+    ratelimit-size: 4m
+    ratelimit-factor: 0
+
+    # --- Privacy (ZERO LOGS) ---
+    verbosity: 0
+    use-syslog: no
+    logfile: "/dev/null"
+    log-queries: no
+    log-replies: no
+    val-log-level: 0
+    
+    # --- Hardening ---
+    hide-identity: yes
+    hide-version: yes
+    harden-glue: yes
+    harden-large-queries: yes
+    
+    # --- Access Control ---
+    # Allows connection from ANY IP address
+    access-control: 0.0.0.0/0 allow
+    access-control: ::0/0 allow

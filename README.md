@@ -3,7 +3,7 @@
 A public, lightweight DNS resolver hosted on a Linux VPS. This project offers a direct, personal alternative to major ISP or corporate DNS providers.
 
 📡 Server Details
-You can configure your device or router to use the IPv4 address: `135.181.96.153` (this is a dynamic IP, floating IPs cot more $)
+You can configure your device or router to use the IPv4 address: `135.181.96.153` (WARNING: this is a dynamic IP, floating IPs cost more $)
 
 ⚠️ Performance & Limitations
 Please be aware that this service is hosted on a budget-friendly VPS infrastructure ($3/month tier).
